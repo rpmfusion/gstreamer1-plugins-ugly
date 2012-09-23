@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        0.11.93
-Release:        2%{?dist}
+Version:        0.11.99
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -102,6 +102,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sun Sep 23 2012 Hans de Goede <j.w.r.degoede@gmail.com> - 0.11.99-1
+- New upstream release 0.11.99
+
 * Sun Sep 16 2012 Hans de Goede <j.w.r.degoede@gmail.com> - 0.11.93-2
 - Fix gtk-doc dir ownership (rf#2474)
 
