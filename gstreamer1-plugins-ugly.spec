@@ -1,13 +1,13 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        0.11.99
+Version:        1.0.2
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= %{version}
-BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
+BuildRequires:  gstreamer1-devel >= 1.0.0
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.0.0
 BuildRequires:  gettext-devel gtk-doc
 %if 0%{?fedora} <= 17
 BuildRequires:  libsidplay-devel >= 1.36.0
@@ -102,6 +102,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sun Oct 28 2012 Hans de Goede <j.w.r.degoede@gmail.com> - 1.0.2-1
+- New upstream release 1.0.2
+
 * Sun Sep 23 2012 Hans de Goede <j.w.r.degoede@gmail.com> - 0.11.99-1
 - New upstream release 0.11.99
 
