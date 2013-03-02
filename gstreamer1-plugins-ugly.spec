@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.0.2
-Release:        3%{?dist}
+Version:        1.0.5
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -23,7 +23,6 @@ BuildRequires:  libcdio-devel >= 0.82
 BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
-BuildRequires:  PyXML
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -102,6 +101,10 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sat Mar  2 2013 Hans de Goede <j.w.r.degoede@gmail.com> - 1.0.5-1
+- New upstream release 1.0.5
+- Drop no longer needed PyXML BuildRequires (rf#2572)
+
 * Sun Jan 20 2013 Nicolas Chauvet <kwizart@gmail.com> - 1.0.2-3
 - Rebuilt for FFmpeg/x264
 
