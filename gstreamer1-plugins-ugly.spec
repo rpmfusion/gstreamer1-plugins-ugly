@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.2.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -101,6 +101,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sat Mar 22 2014 Sérgio Basto <sergio@serjux.com> - 1.2.3-3
+- Rebuilt for x264
+
 * Thu Mar 06 2014 Nicolas Chauvet <kwizart@gmail.com> - 1.2.3-2
 - Rebuilt for x264
 
