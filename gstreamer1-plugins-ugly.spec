@@ -1,13 +1,13 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.4.5
+Version:        1.6.1
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.4.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.4.0
+BuildRequires:  gstreamer1-devel >= 1.6.0
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.6.0
 BuildRequires:  gettext-devel gtk-doc
 BuildRequires:  a52dec-devel >= 0.7.3
 BuildRequires:  libdvdread-devel >= 0.9.0
@@ -51,6 +51,9 @@ be shipped in gstreamer-plugins-good because:
 
 %prep
 %setup -q -n gst-plugins-ugly-%{version}
+# hack to allow building against 1.6.0 as 1.6.1 is not yet in the buildroot
+sed -i 's/GST_REQ=1.6.1/GST_REQ=1.6.0/' configure
+sed -i 's/GSTPB_REQ=1.6.1/GSTPB_REQ=1.6.0/' configure
 
 
 %build
@@ -95,6 +98,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sat Oct 31 2015 Hans de Goede <j.w.r.degoede@gmail.com> - 1.6.1-1
+- Rebase to new upstream release 1.6.1
+
 * Sat May 16 2015 Hans de Goede <j.w.r.degoede@gmail.com> - 1.4.5-1
 - Rebase to new upstream release 1.4.5
 
