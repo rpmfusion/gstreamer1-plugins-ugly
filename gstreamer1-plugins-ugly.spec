@@ -1,13 +1,13 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.6.3
+Version:        1.8.1
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.6.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.6.0
+BuildRequires:  gstreamer1-devel >= 1.8.0
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.8.0
 BuildRequires:  gettext-devel gtk-doc
 BuildRequires:  a52dec-devel >= 0.7.3
 BuildRequires:  libdvdread-devel >= 0.9.0
@@ -20,6 +20,7 @@ BuildRequires:  libcdio-devel >= 0.82
 BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
+BuildRequires:  libmpg123-devel
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -51,9 +52,9 @@ be shipped in gstreamer-plugins-good because:
 
 %prep
 %setup -q -n gst-plugins-ugly-%{version}
-# hack to allow building against 1.6.0 as 1.6.3 is not yet in the buildroot
-sed -i 's/GST_REQ=1.6.3/GST_REQ=1.6.0/' configure
-sed -i 's/GSTPB_REQ=1.6.3/GSTPB_REQ=1.6.0/' configure
+# hack to allow building against 1.8.0 as 1.8.1 is not yet in the buildroot
+sed -i 's/GST_REQ=1.8.1/GST_REQ=1.8.0/' configure
+sed -i 's/GSTPB_REQ=1.8.1/GSTPB_REQ=1.8.0/' configure
 
 
 %build
@@ -89,6 +90,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstlame.so
 %{_libdir}/gstreamer-1.0/libgstmad.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
+%{_libdir}/gstreamer-1.0/libgstmpg123.so
 %{_libdir}/gstreamer-1.0/libgsttwolame.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
@@ -98,6 +100,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sat May 14 2016 Michael Kuhn <suraia@ikkoku.de> - 1.8.1-1
+- Update to 1.8.1.
+
 * Sat Jan 23 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.6.3-1
 - Rebase to new upstream release 1.6.3
 
