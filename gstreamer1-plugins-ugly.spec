@@ -1,6 +1,6 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.6.3
+Version:        1.8.1
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
@@ -20,6 +20,7 @@ BuildRequires:  libcdio-devel >= 0.82
 BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
+BuildRequires:  libmpg123-devel
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -72,7 +73,8 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %files -f gst-plugins-ugly-1.0.lang
-%doc AUTHORS COPYING README REQUIREMENTS
+%doc AUTHORS README REQUIREMENTS
+%license COPYING
 %{_datadir}/gstreamer-1.0
 # Plugins without external dependencies
 %{_libdir}/gstreamer-1.0/libgstasf.so
@@ -89,6 +91,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstlame.so
 %{_libdir}/gstreamer-1.0/libgstmad.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
+%{_libdir}/gstreamer-1.0/libgstmpg123.so
 %{_libdir}/gstreamer-1.0/libgsttwolame.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
@@ -98,6 +101,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Wed May 18 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.8.1-1
+- Rebase to new upstream release 1.8.1
+
 * Sat Jan 23 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.6.3-1
 - Rebase to new upstream release 1.6.3
 
