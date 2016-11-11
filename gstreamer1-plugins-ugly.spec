@@ -1,6 +1,6 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.8.2
+Version:        1.10.0
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
@@ -52,6 +52,8 @@ be shipped in gstreamer-plugins-good because:
 
 %prep
 %setup -q -n gst-plugins-ugly-%{version}
+# Build against 1.9.2 as 1.10.0 is not yet in the stable Fedora repo
+sed -i 's/1.10.0/1.9.2/' configure
 
 
 %build
@@ -64,7 +66,7 @@ make %{?_smp_mflags}
 
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 %find_lang gst-plugins-ugly-1.0
 rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
@@ -98,6 +100,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Fri Nov 11 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.10.0-1
+- Rebase to new upstream release 1.10.0
+
 * Sun Jun 12 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.8.2-1
 - Rebase to new upstream release 1.8.2
 
