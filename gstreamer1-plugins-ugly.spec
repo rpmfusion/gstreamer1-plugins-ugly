@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -20,7 +20,6 @@ BuildRequires:  libcdio-devel >= 0.82
 BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
-BuildRequires:  libmpg123-devel
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -61,7 +60,7 @@ sed -i 's/1.10.0/1.9.2/' configure
     --with-package-name="gst-plugins-ugly 1.0 rpmfusion rpm" \
     --with-package-origin="http://rpmfusion.org/" \
     --enable-debug --enable-gtk-doc \
-    --disable-static
+    --disable-static --disable-mpg123
 make %{?_smp_mflags}
 
 
@@ -90,7 +89,6 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstlame.so
 %{_libdir}/gstreamer-1.0/libgstmad.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
-%{_libdir}/gstreamer-1.0/libgstmpg123.so
 %{_libdir}/gstreamer-1.0/libgsttwolame.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
@@ -100,6 +98,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sun Nov 13 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.10.0-2
+- Drop mpg123 plugin, it is in Fedora proper now 
+
 * Fri Nov 11 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.10.0-1
 - Rebase to new upstream release 1.10.0
 
