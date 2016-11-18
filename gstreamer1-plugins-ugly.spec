@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.10.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -98,8 +98,11 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Fri Nov 18 2016 Adrian Reber <adrian@lisas.de> - 1.10.0-3
+- Rebuilt for libcdio-0.94
+
 * Sun Nov 13 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.10.0-2
-- Drop mpg123 plugin, it is in Fedora proper now 
+- Drop mpg123 plugin, it is in Fedora proper now
 
 * Fri Nov 11 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.10.0-1
 - Rebase to new upstream release 1.10.0
