@@ -1,7 +1,2 @@
-gst-plugins-ugly-1.4.5.tar.xz
-gst-plugins-ugly-1.6.1.tar.xz
-gst-plugins-ugly-1.6.2.tar.xz
-gst-plugins-ugly-1.6.3.tar.xz
-gst-plugins-ugly-1.8.1.tar.xz
-gst-plugins-ugly-1.8.2.tar.xz
-/gst-plugins-ugly-1.10.0.tar.xz
+/gst-plugins-ugly-*.tar.xz
+/gstreamer1-plugins-ugly-*.src.rpm

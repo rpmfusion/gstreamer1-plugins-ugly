@@ -1,13 +1,13 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.10.0
-Release:        3%{?dist}
+Version:        1.10.2
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.6.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.6.0
+BuildRequires:  gstreamer1-devel >= 1.10.0
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.10.0
 BuildRequires:  gettext-devel gtk-doc
 BuildRequires:  a52dec-devel >= 0.7.3
 BuildRequires:  libdvdread-devel >= 0.9.0
@@ -51,16 +51,15 @@ be shipped in gstreamer-plugins-good because:
 
 %prep
 %setup -q -n gst-plugins-ugly-%{version}
-# Build against 1.9.2 as 1.10.0 is not yet in the stable Fedora repo
-sed -i 's/1.10.0/1.9.2/' configure
 
 
 %build
-%configure \
+%configure --disable-static \
     --with-package-name="gst-plugins-ugly 1.0 rpmfusion rpm" \
     --with-package-origin="http://rpmfusion.org/" \
-    --enable-debug --enable-gtk-doc \
-    --disable-static --disable-mpg123
+    --enable-debug \
+    --enable-gtk-doc \
+    --disable-mpg123
 make %{?_smp_mflags}
 
 
@@ -98,6 +97,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Wed Nov 30 2016 leigh scott <leigh123linux@googlemail.com> - 1.10.2-1
+- Update to 1.10.2
+
 * Fri Nov 18 2016 Adrian Reber <adrian@lisas.de> - 1.10.0-3
 - Rebuilt for libcdio-0.94
 
