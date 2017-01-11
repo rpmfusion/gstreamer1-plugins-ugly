@@ -1,13 +1,13 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.10.2
+Version:        1.4.5
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.10.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.10.0
+BuildRequires:  gstreamer1-devel >= 1.4.0
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.4.0
 BuildRequires:  gettext-devel gtk-doc
 BuildRequires:  a52dec-devel >= 0.7.3
 BuildRequires:  libdvdread-devel >= 0.9.0
@@ -54,24 +54,22 @@ be shipped in gstreamer-plugins-good because:
 
 
 %build
-%configure --disable-static \
+%configure \
     --with-package-name="gst-plugins-ugly 1.0 rpmfusion rpm" \
     --with-package-origin="http://rpmfusion.org/" \
-    --enable-debug \
-    --enable-gtk-doc \
-    --disable-mpg123
+    --enable-debug --enable-gtk-doc \
+    --disable-static
 make %{?_smp_mflags}
 
 
 %install
-%make_install
+make install DESTDIR=$RPM_BUILD_ROOT
 %find_lang gst-plugins-ugly-1.0
 rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %files -f gst-plugins-ugly-1.0.lang
-%doc AUTHORS README REQUIREMENTS
-%license COPYING
+%doc AUTHORS COPYING README REQUIREMENTS
 %{_datadir}/gstreamer-1.0
 # Plugins without external dependencies
 %{_libdir}/gstreamer-1.0/libgstasf.so
@@ -97,33 +95,6 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
-* Wed Nov 30 2016 leigh scott <leigh123linux@googlemail.com> - 1.10.2-1
-- Update to 1.10.2
-
-* Fri Nov 18 2016 Adrian Reber <adrian@lisas.de> - 1.10.0-3
-- Rebuilt for libcdio-0.94
-
-* Sun Nov 13 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.10.0-2
-- Drop mpg123 plugin, it is in Fedora proper now
-
-* Fri Nov 11 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.10.0-1
-- Rebase to new upstream release 1.10.0
-
-* Sun Jun 12 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.8.2-1
-- Rebase to new upstream release 1.8.2
-
-* Wed May 18 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.8.1-1
-- Rebase to new upstream release 1.8.1
-
-* Sat Jan 23 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.6.3-1
-- Rebase to new upstream release 1.6.3
-
-* Thu Dec 24 2015 Hans de Goede <j.w.r.degoede@gmail.com> - 1.6.2-1
-- Rebase to new upstream release 1.6.2
-
-* Sat Oct 31 2015 Hans de Goede <j.w.r.degoede@gmail.com> - 1.6.1-1
-- Rebase to new upstream release 1.6.1
-
 * Sat May 16 2015 Hans de Goede <j.w.r.degoede@gmail.com> - 1.4.5-1
 - Rebase to new upstream release 1.4.5
 
