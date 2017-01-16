@@ -1,19 +1,18 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.10.2
+Version:        1.11.1
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.10.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.10.0
+BuildRequires:  gstreamer1-devel >= 1.11.1
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.11.1
 BuildRequires:  gettext-devel gtk-doc
 BuildRequires:  a52dec-devel >= 0.7.3
 BuildRequires:  libdvdread-devel >= 0.9.0
 BuildRequires:  lame-devel >= 3.89
 BuildRequires:  libid3tag-devel >= 0.15.0
-BuildRequires:  libmad-devel >= 0.15.0
 BuildRequires:  mpeg2dec-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
 BuildRequires:  libcdio-devel >= 0.82
@@ -86,7 +85,6 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstcdio.so
 %{_libdir}/gstreamer-1.0/libgstdvdread.so
 %{_libdir}/gstreamer-1.0/libgstlame.so
-%{_libdir}/gstreamer-1.0/libgstmad.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
 %{_libdir}/gstreamer-1.0/libgsttwolame.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
@@ -97,6 +95,10 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Mon Jan 16 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.1-1
+- Update to 1.11.1
+- Remove libmad bits as mad is no longer included in the source
+
 * Wed Nov 30 2016 leigh scott <leigh123linux@googlemail.com> - 1.10.2-1
 - Update to 1.10.2
 
