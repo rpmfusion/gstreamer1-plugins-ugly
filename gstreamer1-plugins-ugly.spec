@@ -50,7 +50,7 @@ be shipped in gstreamer-plugins-good because:
 
 
 %prep
-%setup -q -n gst-plugins-ugly-%{version}
+%autosetup -n gst-plugins-ugly-%{version}
 
 
 %build
@@ -60,13 +60,13 @@ be shipped in gstreamer-plugins-good because:
     --enable-debug \
     --enable-gtk-doc \
     --disable-mpg123
-make %{?_smp_mflags}
+%make_build V=1
 
 
 %install
-%make_install
+%make_install V=1
 %find_lang gst-plugins-ugly-1.0
-rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
+rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %files -f gst-plugins-ugly-1.0.lang
