@@ -1,13 +1,15 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.10.2
+Version:        1.10.3
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.10.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.10.0
+# https://cgit.freedesktop.org/gstreamer/gst-plugins-ugly/patch/?id=fe74dabd2c8dc2be54156729986ea38582e8c7ae
+Patch0:         gst-plugins-ugly-1.10.3-asfdemux.patch
+BuildRequires:  gstreamer1-devel >= 1.10.3
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.10.3
 BuildRequires:  gettext-devel gtk-doc
 BuildRequires:  a52dec-devel >= 0.7.3
 BuildRequires:  libdvdread-devel >= 0.9.0
@@ -50,7 +52,7 @@ be shipped in gstreamer-plugins-good because:
 
 
 %prep
-%autosetup -n gst-plugins-ugly-%{version}
+%autosetup -p1 -n gst-plugins-ugly-%{version}
 
 
 %build
@@ -97,6 +99,9 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Fri Feb 03 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.10.3-1
+- Update to 1.10.3
+
 * Wed Nov 30 2016 leigh scott <leigh123linux@googlemail.com> - 1.10.2-1
 - Update to 1.10.2
 
