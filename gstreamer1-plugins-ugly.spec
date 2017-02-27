@@ -6,8 +6,6 @@ License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
-# https://cgit.freedesktop.org/gstreamer/gst-plugins-ugly/patch/?id=fe74dabd2c8dc2be54156729986ea38582e8c7ae
-Patch0:         gst-plugins-ugly-1.10.3-asfdemux.patch
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gettext-devel gtk-doc
