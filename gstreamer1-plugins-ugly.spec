@@ -6,6 +6,8 @@ License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
+# Upstream fix
+Patch0:         asfdemux-Fix-compilation-with-gcc-7.patch
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gettext-devel gtk-doc
@@ -49,7 +51,7 @@ be shipped in gstreamer-plugins-good because:
 
 
 %prep
-%autosetup -n gst-plugins-ugly-%{version}
+%autosetup -p1 -n gst-plugins-ugly-%{version}
 
 
 %build
@@ -97,6 +99,7 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 %changelog
 * Mon Feb 27 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.2-1
 - Update to 1.11.2
+- Add upstream gcc-7 commit
 
 * Mon Jan 16 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.1-1
 - Update to 1.11.1

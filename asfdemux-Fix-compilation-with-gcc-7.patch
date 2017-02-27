@@ -1,0 +1,31 @@
+From 66659f07f59ca9fcfdef7ae0531ffa681ee5b079 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Mon, 27 Feb 2017 20:55:34 +0200
+Subject: [PATCH] asfdemux: Fix compilation with gcc 7
+
+gstasfdemux.c: In function 'gst_asf_demux_parse_stream_object':
+gstasfdemux.c:3001:39: error: '<<' in boolean context, did you mean '<' ? [-Werror=int-in-bool-context]
+   is_encrypted = ! !((flags & 0x8000) << 15);
+                     ~~~~~~~~~~~~~~~~~~^~~~~~
+
+https://bugzilla.gnome.org/show_bug.cgi?id=779329
+---
+ gst/asfdemux/gstasfdemux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gst/asfdemux/gstasfdemux.c b/gst/asfdemux/gstasfdemux.c
+index b8d48ad6..5afeaabb 100644
+--- a/gst/asfdemux/gstasfdemux.c
++++ b/gst/asfdemux/gstasfdemux.c
+@@ -2998,7 +2998,7 @@ gst_asf_demux_parse_stream_object (GstASFDemux * demux, guint8 * data,
+ 
+   flags = gst_asf_demux_get_uint16 (&data, &size);
+   stream_id = flags & 0x7f;
+-  is_encrypted = ! !((flags & 0x8000) << 15);
++  is_encrypted = ! !(flags & 0x8000);
+   unknown = gst_asf_demux_get_uint32 (&data, &size);
+ 
+   GST_DEBUG_OBJECT (demux, "Found stream %u, time_offset=%" GST_TIME_FORMAT,
+-- 
+2.11.1
+
