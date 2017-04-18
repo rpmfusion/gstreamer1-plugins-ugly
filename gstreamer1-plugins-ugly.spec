@@ -1,13 +1,12 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.11.2
-Release:        2%{?dist}
+Version:        1.11.90
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
-# Upstream fix
-Patch0:         asfdemux-Fix-compilation-with-gcc-7.patch
+
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gettext-devel gtk-doc
@@ -78,7 +77,7 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstasf.so
 %{_libdir}/gstreamer-1.0/libgstdvdlpcmdec.so
 %{_libdir}/gstreamer-1.0/libgstdvdsub.so
-%{_libdir}/gstreamer-1.0/libgstrmdemux.so
+%{_libdir}/gstreamer-1.0/libgstrealmedia.so
 %{_libdir}/gstreamer-1.0/libgstxingmux.so
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgsta52dec.so
@@ -97,6 +96,10 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Tue Apr 18 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.90-1
+- Update to 1.11.90
+- Upstream renamed libgstrmdemux.so to libgstrealmedia.so
+
 * Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.11.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
