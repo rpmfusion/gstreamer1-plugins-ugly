@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.10.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -9,17 +9,17 @@ Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugin
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gettext-devel gtk-doc
-BuildRequires:  a52dec-devel >= 0.7.3
-BuildRequires:  libdvdread-devel >= 0.9.0
 BuildRequires:  lame-devel >= 3.89
 BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  libmad-devel >= 0.15.0
 BuildRequires:  mpeg2dec-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
-BuildRequires:  libcdio-devel >= 0.82
 BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
+
+# Provides locale files
+Requires:       gstreamer1-plugins-ugly-free%{?_isa} = %{version}
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -59,17 +59,21 @@ be shipped in gstreamer-plugins-good because:
     --with-package-origin="http://rpmfusion.org/" \
     --enable-debug \
     --enable-gtk-doc \
-    --disable-mpg123
+    --disable-mpg123 \
+    --disable-cdio \
+    --disable-dvdread \
+    --disable-a52dec \
+    --disable-xingmux
 %make_build V=1
 
 
 %install
 %make_install V=1
-%find_lang gst-plugins-ugly-1.0
 rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
+rm -rf %{buildroot}%{_datadir}/locale/
 
 
-%files -f gst-plugins-ugly-1.0.lang
+%files
 %doc AUTHORS README REQUIREMENTS
 %license COPYING
 %{_datadir}/gstreamer-1.0
@@ -78,13 +82,9 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstdvdlpcmdec.so
 %{_libdir}/gstreamer-1.0/libgstdvdsub.so
 %{_libdir}/gstreamer-1.0/libgstrmdemux.so
-%{_libdir}/gstreamer-1.0/libgstxingmux.so
 # Plugins with external dependencies
-%{_libdir}/gstreamer-1.0/libgsta52dec.so
 %{_libdir}/gstreamer-1.0/libgstamrnb.so
 %{_libdir}/gstreamer-1.0/libgstamrwbdec.so
-%{_libdir}/gstreamer-1.0/libgstcdio.so
-%{_libdir}/gstreamer-1.0/libgstdvdread.so
 %{_libdir}/gstreamer-1.0/libgstlame.so
 %{_libdir}/gstreamer-1.0/libgstmad.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
@@ -97,6 +97,12 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Thu May 11 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.10.4-2
+- Add requires gstreamer1-plugins-ugly-free
+- remove a52dec, cdio, dvdread and xingmux plugins,
+  moved to gstreamer1-plugins-ugly-free package.
+- Remove locale files
+
 * Mon Feb 27 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.10.4-1
 - Update to 1.10.4
 
