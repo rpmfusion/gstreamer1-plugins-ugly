@@ -1,6 +1,6 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.11.90
+Version:        1.12.0
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
@@ -10,13 +10,10 @@ Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugin
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gettext-devel gtk-doc
-BuildRequires:  a52dec-devel >= 0.7.3
-BuildRequires:  libdvdread-devel >= 0.9.0
 BuildRequires:  lame-devel >= 3.89
 BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  mpeg2dec-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
-BuildRequires:  libcdio-devel >= 0.82
 BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
@@ -59,7 +56,11 @@ be shipped in gstreamer-plugins-good because:
     --with-package-origin="http://rpmfusion.org/" \
     --enable-debug \
     --enable-gtk-doc \
-    --disable-mpg123
+    --disable-mpg123 \
+    --disable-cdio \
+    --disable-dvdread \
+    --disable-a52dec \
+    --disable-xingmux
 %make_build V=1
 
 
@@ -78,13 +79,9 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstdvdlpcmdec.so
 %{_libdir}/gstreamer-1.0/libgstdvdsub.so
 %{_libdir}/gstreamer-1.0/libgstrealmedia.so
-%{_libdir}/gstreamer-1.0/libgstxingmux.so
 # Plugins with external dependencies
-%{_libdir}/gstreamer-1.0/libgsta52dec.so
 %{_libdir}/gstreamer-1.0/libgstamrnb.so
 %{_libdir}/gstreamer-1.0/libgstamrwbdec.so
-%{_libdir}/gstreamer-1.0/libgstcdio.so
-%{_libdir}/gstreamer-1.0/libgstdvdread.so
 %{_libdir}/gstreamer-1.0/libgstlame.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
 %{_libdir}/gstreamer-1.0/libgsttwolame.so
@@ -96,6 +93,11 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Thu May 11 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.0-1
+- Update to 1.12.0
+- remove a52dec, cdio, dvdread and xingmux plugins,
+  moved to gstreamer1-plugins-ugly-free package.
+
 * Tue Apr 18 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.90-1
 - Update to 1.11.90
 - Upstream renamed libgstrmdemux.so to libgstrealmedia.so
