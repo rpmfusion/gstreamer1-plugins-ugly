@@ -18,6 +18,9 @@ BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
 
+# Provided locale files
+Requires:       gstreamer1-plugins-ugly-free%{?_isa} = %{version}
+
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
 operate on media data.
@@ -66,11 +69,11 @@ be shipped in gstreamer-plugins-good because:
 
 %install
 %make_install V=1
-%find_lang gst-plugins-ugly-1.0
 rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
+rm -rf %{buildroot}%{_datadir}/locale/
 
 
-%files -f gst-plugins-ugly-1.0.lang
+%files
 %doc AUTHORS README REQUIREMENTS
 %license COPYING
 %{_datadir}/gstreamer-1.0
@@ -95,8 +98,8 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 %changelog
 * Thu May 11 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.0-1
 - Update to 1.12.0
-- remove a52dec, cdio, dvdread and xingmux plugins,
-  moved to gstreamer1-plugins-ugly-free package.
+- Add requires gstreamer1-plugins-ugly-free
+- Remove locale files
 
 * Tue Apr 18 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.90-1
 - Update to 1.11.90
