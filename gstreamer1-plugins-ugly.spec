@@ -18,7 +18,7 @@ BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
 
-# Provided locale files
+# Provides locale files
 Requires:       gstreamer1-plugins-ugly-free%{?_isa} = %{version}
 
 %description
@@ -99,6 +99,8 @@ rm -rf %{buildroot}%{_datadir}/locale/
 * Thu May 11 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.0-1
 - Update to 1.12.0
 - Add requires gstreamer1-plugins-ugly-free
+- remove a52dec, cdio, dvdread and xingmux plugins,
+  moved to gstreamer1-plugins-ugly-free package.
 - Remove locale files
 
 * Tue Apr 18 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.90-1
