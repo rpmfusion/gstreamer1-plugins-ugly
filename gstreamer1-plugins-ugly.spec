@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.10.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -9,7 +9,6 @@ Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugin
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gettext-devel gtk-doc
-BuildRequires:  lame-devel >= 3.89
 BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  libmad-devel >= 0.15.0
 BuildRequires:  mpeg2dec-devel >= 0.4.0
@@ -63,7 +62,8 @@ be shipped in gstreamer-plugins-good because:
     --disable-cdio \
     --disable-dvdread \
     --disable-a52dec \
-    --disable-xingmux
+    --disable-xingmux \
+    --disable-lame
 %make_build V=1
 
 
@@ -85,7 +85,6 @@ rm -rf %{buildroot}%{_datadir}/locale/
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstamrnb.so
 %{_libdir}/gstreamer-1.0/libgstamrwbdec.so
-%{_libdir}/gstreamer-1.0/libgstlame.so
 %{_libdir}/gstreamer-1.0/libgstmad.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
 %{_libdir}/gstreamer-1.0/libgsttwolame.so
@@ -97,6 +96,9 @@ rm -rf %{buildroot}%{_datadir}/locale/
 
 
 %changelog
+* Fri May 12 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.10.4-3
+- Remove lame plugin
+
 * Thu May 11 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.10.4-2
 - Add requires gstreamer1-plugins-ugly-free
 - remove a52dec, cdio, dvdread and xingmux plugins,
