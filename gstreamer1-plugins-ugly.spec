@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.10.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -71,6 +71,7 @@ be shipped in gstreamer-plugins-good because:
 %make_install V=1
 rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 rm -rf %{buildroot}%{_datadir}/locale/
+rm %{buildroot}%{_datadir}/gtk-doc/html/gst-plugins-ugly-plugins-1.0/gst-plugins-ugly-plugins-1.0.devhelp2
 
 
 %files
@@ -96,6 +97,9 @@ rm -rf %{buildroot}%{_datadir}/locale/
 
 
 %changelog
+* Sun Jul 09 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.10.5-2
+- Remove conflicting file in devel-docs (rfbz #4589)
+
 * Fri Jun 23 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.10.5-1
 - Update to 1.10.5
 
