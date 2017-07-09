@@ -1,11 +1,13 @@
+%global src_name gst-plugins-ugly
+
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.12.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
-URL:            http://gstreamer.freedesktop.org/
-Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
+URL:            https://gstreamer.freedesktop.org/
+Source0:        %{url}/src/gst-plugins-ugly/%{src_name}-%{version}.tar.xz
 
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
@@ -18,7 +20,7 @@ BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
 
 # Provides locale files
-Requires:       gstreamer1-plugins-ugly-free%{?_isa} = %{version}
+Requires:       %{name}-free%{?_isa} = %{version}
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -35,6 +37,7 @@ gstreamer-plugins-good because:
 Summary: Development documentation for the GStreamer "ugly" plug-ins
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
+Requires: %{name}-free-devel = %{version}
 BuildArch: noarch
 
 %description devel-docs
@@ -49,7 +52,7 @@ be shipped in gstreamer-plugins-good because:
 
 
 %prep
-%autosetup -p1 -n gst-plugins-ugly-%{version}
+%autosetup -p1 -n %{src_name}-%{version}
 
 
 %build
@@ -71,7 +74,7 @@ be shipped in gstreamer-plugins-good because:
 %make_install V=1
 rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 rm -rf %{buildroot}%{_datadir}/locale/
-rm %{buildroot}%{_datadir}/gtk-doc/html/gst-plugins-ugly-plugins-1.0/gst-plugins-ugly-plugins-1.0.devhelp2
+rm %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %files
@@ -92,10 +95,13 @@ rm %{buildroot}%{_datadir}/gtk-doc/html/gst-plugins-ugly-plugins-1.0/gst-plugins
 
 %files devel-docs
 # Take the dir and everything below it for proper dir ownership
-%doc %{_datadir}/gtk-doc
+%doc %{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/
 
 
 %changelog
+* Sun Jul 09 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.1-3
+- A better fix, add requires gstreamer1-plugins-ugly-free-devel (rfbz #4589)
+
 * Sun Jul 09 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.1-2
 - Remove conflicting file in devel-docs (rfbz #4589)
 
