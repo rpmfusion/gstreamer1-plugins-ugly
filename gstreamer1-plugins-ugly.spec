@@ -7,7 +7,7 @@ Release:        3%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            https://gstreamer.freedesktop.org/
-Source0:        %{url}/src/gst-plugins-ugly/%{src_name}-%{version}.tar.x
+Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gettext-devel gtk-doc
