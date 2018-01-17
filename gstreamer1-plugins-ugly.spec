@@ -3,7 +3,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.12.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            https://gstreamer.freedesktop.org/
@@ -15,7 +15,6 @@ BuildRequires:  gettext-devel gtk-doc
 BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  mpeg2dec-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
-BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
 
@@ -66,7 +65,8 @@ be shipped in gstreamer-plugins-good because:
     --disable-dvdread \
     --disable-a52dec \
     --disable-xingmux \
-    --disable-lame
+    --disable-lame \
+    --disable-twolame
 %make_build V=1
 
 
@@ -90,7 +90,6 @@ rm %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 %{_libdir}/gstreamer-1.0/libgstamrnb.so
 %{_libdir}/gstreamer-1.0/libgstamrwbdec.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
-%{_libdir}/gstreamer-1.0/libgsttwolame.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
 %files devel-docs
@@ -99,6 +98,9 @@ rm %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %changelog
+* Wed Jan 17 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.12.4-3
+- remove twolame (rfbz#4766)
+
 * Sat Dec 30 2017 Sérgio Basto <sergio@serjux.com> - 1.12.4-2
 - Mass rebuild for x264 and x265
 
