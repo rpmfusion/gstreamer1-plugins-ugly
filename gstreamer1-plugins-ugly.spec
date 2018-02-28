@@ -2,8 +2,8 @@
 
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.12.4
-Release:        3%{?dist}
+Version:        1.13.1
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            https://gstreamer.freedesktop.org/
@@ -11,7 +11,7 @@ Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
 
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
-BuildRequires:  gettext-devel gtk-doc
+BuildRequires:  gettext-devel
 BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  mpeg2dec-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
@@ -20,6 +20,9 @@ BuildRequires:  opencore-amr-devel
 
 # Provides locale files
 Requires:       %{name}-free%{?_isa} = %{version}
+
+# Subpkg is empty, so no point -- rex
+Obsoletes: %{name}-devel-docs < 1.13
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -34,7 +37,6 @@ gstreamer-plugins-good because:
 
 %package devel-docs
 Summary: Development documentation for the GStreamer "ugly" plug-ins
-Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-free-devel = %{version}
 BuildArch: noarch
@@ -55,11 +57,13 @@ be shipped in gstreamer-plugins-good because:
 
 
 %build
-%configure --disable-static \
+%configure \
+    --disable-silent-rules --disable-fatal-warnings \
     --with-package-name="gst-plugins-ugly 1.0 rpmfusion rpm" \
     --with-package-origin="http://rpmfusion.org/" \
+    --disable-static \
     --enable-debug \
-    --enable-gtk-doc \
+    --disable-gtk-doc \
     --disable-mpg123 \
     --disable-cdio \
     --disable-dvdread \
@@ -67,14 +71,16 @@ be shipped in gstreamer-plugins-good because:
     --disable-xingmux \
     --disable-lame \
     --disable-twolame
+
 %make_build V=1
 
 
 %install
 %make_install V=1
-rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
+
+rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 rm -rf %{buildroot}%{_datadir}/locale/
-rm %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
+rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %files
@@ -92,12 +98,15 @@ rm %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
-%files devel-docs
+#files devel-docs
 # Take the dir and everything below it for proper dir ownership
-%doc %{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/
+#doc %{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/
 
 
 %changelog
+* Wed Feb 28 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.13.1-1
+- 1.13.1
+
 * Wed Jan 17 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.12.4-3
 - remove twolame (rfbz#4766)
 
