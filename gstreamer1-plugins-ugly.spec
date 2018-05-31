@@ -3,7 +3,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.14.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            https://gstreamer.freedesktop.org/
@@ -13,7 +13,7 @@ BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gettext-devel
 BuildRequires:  libid3tag-devel >= 0.15.0
-BuildRequires:  mpeg2dec-devel >= 0.4.0
+BuildRequires:  libmpeg2-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
@@ -105,6 +105,9 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %changelog
+* Thu May 31 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.1-2
+- BR: s/mpeg2dec-devel/libmpeg2-devel/
+
 * Thu May 31 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.1-1
 - 1.14.1
 
