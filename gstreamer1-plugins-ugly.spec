@@ -2,7 +2,7 @@
 
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.14.0
+Version:        1.14.1
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
@@ -19,7 +19,8 @@ BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
 
 # Provides locale files
-Requires:       %{name}-free%{?_isa} = %{version}
+# relax dep to >= to make fedora/rpmfusion upgrades easier
+Requires:       %{name}-free%{?_isa} >= %{version}
 
 # Subpkg is empty, so no point -- rex
 Obsoletes: %{name}-devel-docs < 1.13
@@ -104,6 +105,9 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %changelog
+* Thu May 31 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.1-1
+- 1.14.1
+
 * Fri Mar 23 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.0-1
 - 1.14.0
 
