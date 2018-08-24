@@ -2,8 +2,8 @@
 
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.12.4
-Release:        3%{?dist}
+Version:        1.12.5
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            https://gstreamer.freedesktop.org/
@@ -98,6 +98,9 @@ rm %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %changelog
+* Thu Aug 23 2018 Todd Zullinger <tmz@pobox.com> - 1.12.5-1
+- Update to 1.12.5
+
 * Wed Jan 17 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.12.4-3
 - remove twolame (rfbz#4766)
 
