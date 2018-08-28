@@ -1,6 +1,6 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.10.2
+Version:        1.10.4
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
@@ -8,18 +8,22 @@ URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
 BuildRequires:  gstreamer1-devel >= 1.10.0
 BuildRequires:  gstreamer1-plugins-base-devel >= 1.10.0
-BuildRequires:  gettext-devel gtk-doc
+BuildRequires:  gettext-devel
+BuildRequires:  gtk-doc
 BuildRequires:  a52dec-devel >= 0.7.3
-BuildRequires:  libdvdread-devel >= 0.9.0
+#BuildRequires:  libdvdread-devel >= 0.9.0
 BuildRequires:  lame-devel >= 3.89
 BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  libmad-devel >= 0.15.0
 BuildRequires:  mpeg2dec-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
-BuildRequires:  libcdio-devel >= 0.82
+#BuildRequires:  libcdio-devel >= 0.82
 BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
+# gstreamer1-plugins-ugly-free-devel already have all files of gtk-doc
+Provides: gstreamer1-plugins-ugly-devel-docs = %{version}-%{release}
+Obsoletes: gstreamer1-plugins-ugly-devel-docs < %{version}-%{release}
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -59,14 +63,23 @@ be shipped in gstreamer-plugins-good because:
     --with-package-origin="http://rpmfusion.org/" \
     --enable-debug \
     --enable-gtk-doc \
+    --disable-cdio \
+    --disable-dvdread \
+    --disable-xingmux \
     --disable-mpg123
+
 make %{?_smp_mflags}
 
+#    --disable-twolame
+#    --disable-a52dec \
+#    --disable-lame \
 
 %install
 %make_install
 %find_lang gst-plugins-ugly-1.0
 rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
+# gstreamer1-plugins-ugly-free-devel already have all files of gtk-doc
+rm -rf $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 
 
 %files -f gst-plugins-ugly-1.0.lang
@@ -78,25 +91,29 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstdvdlpcmdec.so
 %{_libdir}/gstreamer-1.0/libgstdvdsub.so
 %{_libdir}/gstreamer-1.0/libgstrmdemux.so
-%{_libdir}/gstreamer-1.0/libgstxingmux.so
+#{_libdir}/gstreamer-1.0/libgstxingmux.so
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgsta52dec.so
 %{_libdir}/gstreamer-1.0/libgstamrnb.so
 %{_libdir}/gstreamer-1.0/libgstamrwbdec.so
-%{_libdir}/gstreamer-1.0/libgstcdio.so
-%{_libdir}/gstreamer-1.0/libgstdvdread.so
+#{_libdir}/gstreamer-1.0/libgstcdio.so
+#{_libdir}/gstreamer-1.0/libgstdvdread.so
 %{_libdir}/gstreamer-1.0/libgstlame.so
 %{_libdir}/gstreamer-1.0/libgstmad.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
 %{_libdir}/gstreamer-1.0/libgsttwolame.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
-%files devel-docs
+# gstreamer1-plugins-ugly-free-devel already have all files of gtk-doc
+#files devel-docs
 # Take the dir and everything below it for proper dir ownership
-%doc %{_datadir}/gtk-doc
+#doc %{_datadir}/gtk-doc
 
 
 %changelog
+* Mon Aug 27 2018 Sérgio Basto <sergio@serjux.com> - 1.10.4-1
+- Update to 1.10.4
+
 * Wed Nov 30 2016 leigh scott <leigh123linux@googlemail.com> - 1.10.2-1
 - Update to 1.10.2
 
