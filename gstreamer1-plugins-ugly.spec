@@ -1,11 +1,11 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.10.4
+Version:        1.10.5
 Release:        1%{?dist}
 License:        LGPLv2+
-Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
+
 BuildRequires:  gstreamer1-devel >= 1.10.0
 BuildRequires:  gstreamer1-plugins-base-devel >= 1.10.0
 BuildRequires:  gettext-devel
@@ -38,7 +38,6 @@ gstreamer-plugins-good because:
 
 %package devel-docs
 Summary: Development documentation for the GStreamer "ugly" plug-ins
-Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 BuildArch: noarch
 
@@ -54,21 +53,21 @@ be shipped in gstreamer-plugins-good because:
 
 
 %prep
-%setup -q -n gst-plugins-ugly-%{version}
+%autosetup -n gst-plugins-ugly-%{version}
 
 
 %build
 %configure --disable-static \
     --with-package-name="gst-plugins-ugly 1.0 rpmfusion rpm" \
     --with-package-origin="http://rpmfusion.org/" \
-    --enable-debug \
+    --disable-debug \
     --enable-gtk-doc \
     --disable-cdio \
     --disable-dvdread \
     --disable-xingmux \
     --disable-mpg123
 
-make %{?_smp_mflags}
+%make_build V=1
 
 #    --disable-twolame
 #    --disable-a52dec \
@@ -77,7 +76,7 @@ make %{?_smp_mflags}
 %install
 %make_install
 %find_lang gst-plugins-ugly-1.0
-rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 # gstreamer1-plugins-ugly-free-devel already have all files of gtk-doc
 rm -rf $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 
@@ -111,6 +110,11 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 
 
 %changelog
+* Tue Nov 20 2018 Antonio Trande <sagitter@fedoraproject.org> - 1.10.5-1
+- Rebuild for x264-0.148 on el7
+- Rebuild for ffmpeg-3.4.5 on el7
+- Set Make macros
+
 * Mon Aug 27 2018 Sérgio Basto <sergio@serjux.com> - 1.10.4-1
 - Update to 1.10.4
 
