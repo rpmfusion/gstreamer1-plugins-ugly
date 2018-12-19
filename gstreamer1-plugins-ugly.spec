@@ -15,7 +15,7 @@ BuildRequires:  a52dec-devel >= 0.7.3
 BuildRequires:  lame-devel >= 3.89
 BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  libmad-devel >= 0.15.0
-BuildRequires:  mpeg2dec-devel >= 0.4.0
+BuildRequires:  libmpeg2-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
 #BuildRequires:  libcdio-devel >= 0.82
 BuildRequires:  twolame-devel
