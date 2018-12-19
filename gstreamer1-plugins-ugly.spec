@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.10.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
@@ -75,13 +75,13 @@ be shipped in gstreamer-plugins-good because:
 
 %install
 %make_install
-%find_lang gst-plugins-ugly-1.0
-rm -f $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
-# gstreamer1-plugins-ugly-free-devel already have all files of gtk-doc
-rm -rf $RPM_BUILD_ROOT%{_datadir}/gtk-doc
+
+rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
+rm -rf %{buildroot}%{_datadir}/locale/
+rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
-%files -f gst-plugins-ugly-1.0.lang
+%files
 %doc AUTHORS README REQUIREMENTS
 %license COPYING
 %{_datadir}/gstreamer-1.0
@@ -103,13 +103,12 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 %{_libdir}/gstreamer-1.0/libgsttwolame.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
-# gstreamer1-plugins-ugly-free-devel already have all files of gtk-doc
-#files devel-docs
-# Take the dir and everything below it for proper dir ownership
-#doc %{_datadir}/gtk-doc
 
 
 %changelog
+* Wed Dec 19 2018 Nicolas Chauvet <kwizart@gmail.com> - 1.10.5-2
+- Fix conflicts with base on locales - rfbz#5116
+
 * Tue Nov 20 2018 Antonio Trande <sagitter@fedoraproject.org> - 1.10.5-1
 - Rebuild for x264-0.148 on el7
 - Rebuild for ffmpeg-3.4.5 on el7
