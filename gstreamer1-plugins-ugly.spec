@@ -78,7 +78,7 @@ be shipped in gstreamer-plugins-good because:
 
 rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 rm -rf %{buildroot}%{_datadir}/locale/
-rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
+rm -fv %{buildroot}%{_datadir}/gtk-doc/html
 
 
 %files
