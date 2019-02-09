@@ -57,8 +57,6 @@ gstreamer-plugins-good because:
 
 %make_build V=1
 
-gst-plugins-ugly-1.15.1.tar.xz
-
 %install
 %make_install V=1
 
