@@ -2,10 +2,9 @@
 
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.14.4
-Release:        2%{?dist}
+Version:        1.15.1
+Release:        1%{?dist}
 License:        LGPLv2+
-Group:          Applications/Multimedia
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
 
@@ -36,24 +35,6 @@ gstreamer-plugins-good because:
 - the license of the library is not LGPL
 - there are possible licensing issues with the code.
 
-
-%package devel-docs
-Summary: Development documentation for the GStreamer "ugly" plug-ins
-Requires: %{name} = %{version}-%{release}
-Requires: %{name}-free-devel = %{version}
-BuildArch: noarch
-
-%description devel-docs
-GStreamer is a streaming media framework, based on graphs of elements which
-operate on media data.
-
-This package contains the development documentation for the plug-ins that can't
-be shipped in gstreamer-plugins-good because:
-- the license is not LGPL
-- the license of the library is not LGPL
-- there are possible licensing issues with the code.
-
-
 %prep
 %autosetup -p1 -n %{src_name}-%{version}
 
@@ -76,6 +57,7 @@ be shipped in gstreamer-plugins-good because:
 
 %make_build V=1
 
+gst-plugins-ugly-1.15.1.tar.xz
 
 %install
 %make_install V=1
@@ -100,12 +82,12 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 %{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
-#files devel-docs
-# Take the dir and everything below it for proper dir ownership
-#doc %{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/
-
 
 %changelog
+* Sat Feb 09 2019 Leigh Scott <leigh123linux@googlemail.com> - 1.15.1-1
+- 1.15.1
+- clean spec
+
 * Wed Nov 07 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.4-2
 - rebuild for x264 (rf#5071)
 
