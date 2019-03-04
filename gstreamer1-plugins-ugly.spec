@@ -3,7 +3,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.15.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
@@ -82,6 +82,9 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %changelog
+* Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.15.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sat Feb 09 2019 Leigh Scott <leigh123linux@googlemail.com> - 1.15.1-1
 - 1.15.1
 - clean spec
