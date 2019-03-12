@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.10.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        LGPLv2+
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-%{version}.tar.xz
@@ -106,6 +106,9 @@ rm -rv %{buildroot}%{_datadir}/gtk-doc/html
 
 
 %changelog
+* Tue Mar 12 2019 Sérgio Basto <sergio@serjux.com> - 1.10.5-3
+- Mass rebuild for x264
+
 * Wed Dec 19 2018 Nicolas Chauvet <kwizart@gmail.com> - 1.10.5-2
 - Fix conflicts with base on locales - rfbz#5116
 
