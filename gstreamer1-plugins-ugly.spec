@@ -13,7 +13,6 @@ BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gettext-devel
 BuildRequires:  libid3tag-devel >= 0.15.0
-BuildRequires:  libmpeg2-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
@@ -53,7 +52,8 @@ gstreamer-plugins-good because:
     --disable-a52dec \
     --disable-xingmux \
     --disable-lame \
-    --disable-twolame
+    --disable-twolame \
+    --disable-mpeg2dec
 
 %make_build V=1
 
@@ -77,7 +77,6 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstamrnb.so
 %{_libdir}/gstreamer-1.0/libgstamrwbdec.so
-%{_libdir}/gstreamer-1.0/libgstmpeg2dec.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
 
