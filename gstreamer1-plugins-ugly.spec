@@ -3,7 +3,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.14.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            https://gstreamer.freedesktop.org/
@@ -105,6 +105,9 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %changelog
+* Thu May 16 2019 Leigh Scott <leigh123linux@gmail.com> - 1.14.4-3
+- Disable mpeg2dec, it's been moved to the fedora package
+
 * Wed Nov 07 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.4-2
 - rebuild for x264 (rf#5071)
 
