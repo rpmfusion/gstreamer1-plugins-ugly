@@ -3,7 +3,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Version:        1.16.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
@@ -81,6 +81,9 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %changelog
+* Thu May 16 2019 Leigh Scott <leigh123linux@gmail.com> - 1.16.0-2
+- Disable mpeg2dec, it's been moved to the fedora package
+
 * Wed Apr 24 2019 Leigh Scott <leigh123linux@gmail.com> - 1.16.0-1
 - 1.16.0
 
