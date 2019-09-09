@@ -17,6 +17,7 @@ BuildRequires:  libmpeg2-devel >= 0.4.0
 BuildRequires:  orc-devel >= 0.4.5
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  opencore-amr-devel
+BuildRequires:  python3
 
 # Provides locale files
 # relax dep to >= to make fedora/rpmfusion upgrades easier
@@ -86,6 +87,7 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 %changelog
 * Fri Sep 06 2019 Xavier Bachelot <xavier@bachelot.org> - 1.14.0-1.1
 - Backport changes from master.
+- Add BuildRequires: python3.
 
 * Fri Mar 23 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.0-1
 - 1.14.0
