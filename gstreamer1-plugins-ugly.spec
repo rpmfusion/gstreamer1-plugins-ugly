@@ -2,8 +2,8 @@
 
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.14.0
-Release:        1%{?dist}.1
+Version:        1.16.1
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
@@ -85,6 +85,9 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %changelog
+* Fri May 08 2020 Xavier Bachelot <xavier@bachelot.org> - 1.16.1-1
+- Update to 1.16.1 to match EL8.2
+
 * Fri Sep 06 2019 Xavier Bachelot <xavier@bachelot.org> - 1.14.0-1.1
 - Backport changes from master.
 - Add BuildRequires: python3.
