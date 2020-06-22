@@ -2,8 +2,8 @@
 
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
-Version:        1.16.2
-Release:        3%{?dist}
+Version:        1.17.1
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
@@ -11,11 +11,11 @@ Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
 BuildRequires:  gcc
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
-BuildRequires:  gettext-devel
 BuildRequires:  libid3tag-devel >= 0.15.0
+BuildRequires:  meson
+BuildRequires:  opencore-amr-devel
 BuildRequires:  orc-devel >= 0.4.5
 BuildRequires:  x264-devel >= 0.0.0-0.28
-BuildRequires:  opencore-amr-devel
 
 # Provides locale files
 # relax dep to >= to make fedora/rpmfusion upgrades easier
@@ -39,31 +39,22 @@ gstreamer-plugins-good because:
 
 
 %build
-%configure \
-    --disable-silent-rules --disable-fatal-warnings \
-    --with-package-name="gst-plugins-ugly 1.0 rpmfusion rpm" \
-    --with-package-origin="http://rpmfusion.org/" \
-    --disable-static \
-    --enable-debug \
-    --disable-gtk-doc \
-    --disable-mpg123 \
-    --disable-cdio \
-    --disable-dvdread \
-    --disable-a52dec \
-    --disable-xingmux \
-    --disable-lame \
-    --disable-twolame \
-    --disable-mpeg2dec
+%meson \
+    -D package-name='gst-plugins-ugly 1.0 rpmfusion rpm' \
+    -D package-origin='http://rpmfusion.org/' \
+    -D doc=disabled \
+    -D cdio=disabled \
+    -D dvdread=disabled \
+    -D a52dec=disabled \
+    -D sidplay=disabled \
+    -D xingmux=disabled \
+    -D mpeg2dec=disabled \
+    -D nls=disabled
 
-%make_build V=1
+%meson_build
 
 %install
-%make_install V=1
-
-rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
-rm -rf %{buildroot}%{_datadir}/locale/
-rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
-
+%meson_install
 
 %files
 %doc AUTHORS README REQUIREMENTS
@@ -81,6 +72,9 @@ rm -fv %{buildroot}%{_datadir}/gtk-doc/html/%{src_name}-plugins-1.0/*
 
 
 %changelog
+* Mon Jun 22 2020 Leigh Scott <leigh123linux@gmail.com> - 1.17.1-1
+- 1.17.1
+
 * Thu Mar 12 2020 Leigh Scott <leigh123linux@gmail.com> - 1.16.2-3
 - Rebuilt for i686
 
