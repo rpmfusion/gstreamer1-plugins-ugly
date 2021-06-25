@@ -2,6 +2,7 @@
 
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
+Epoch:          1
 Version:        1.19.1
 Release:        1%{?dist}
 License:        LGPLv2+
