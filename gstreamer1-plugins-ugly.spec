@@ -7,7 +7,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Epoch:          1
-Version:        1.19.3
+Version:        1.19.2
 Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
@@ -54,7 +54,6 @@ gstreamer-plugins-good because:
     -D sidplay=disabled \
     -D xingmux=disabled \
     -D mpeg2dec=disabled \
-    -D gpl=enabled \
     -D nls=disabled
 
 %meson_build
@@ -78,9 +77,6 @@ gstreamer-plugins-good because:
 
 
 %changelog
-* Mon Nov 15 2021 Sérgio Basto <sergio@serjux.com> - 1:1.19.3-1
-- Update gstreamer1-plugins-ugly to 1.19.3
-
 * Sat Oct 09 2021 Sérgio Basto <sergio@serjux.com> - 1:1.19.2-1
 - Update gstreamer1-plugins-ugly to 1.19.2
 
