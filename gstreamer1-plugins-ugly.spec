@@ -1,7 +1,3 @@
-# gstreamer1.prov is broken and hangs, workarround it
-%global __gstreamer1_provides %{nil}
-
-
 %global src_name gst-plugins-ugly
 
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
@@ -79,8 +75,6 @@ gstreamer-plugins-good because:
 %changelog
 * Mon Aug 02 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1:1.19.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-- gstreamer1.prov is broken and hangs the build, workarround it
-
 
 * Sat Jul 10 2021 Sérgio Basto <sergio@serjux.com> - 1:1.19.1-2
 - Mass rebuild for x264-0.163
