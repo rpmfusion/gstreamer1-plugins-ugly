@@ -52,7 +52,6 @@ gstreamer-plugins-good because:
     -D dvdread=disabled \
     -D a52dec=disabled \
     -D sidplay=disabled \
-    -D xingmux=disabled \
     -D mpeg2dec=disabled \
     -D gpl=enabled \
     -D nls=disabled
