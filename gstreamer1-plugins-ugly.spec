@@ -8,7 +8,7 @@ Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Epoch:          1
 Version:        1.22.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
@@ -18,7 +18,6 @@ BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  meson
-BuildRequires:  opencore-amr-devel
 BuildRequires:  orc-devel >= 0.4.5
 BuildRequires:  x264-devel >= 0.0.0-0.28
 
@@ -71,12 +70,13 @@ gstreamer-plugins-good because:
 %{_libdir}/gstreamer-1.0/libgstdvdsub.so
 %{_libdir}/gstreamer-1.0/libgstrealmedia.so
 # Plugins with external dependencies
-%{_libdir}/gstreamer-1.0/libgstamrnb.so
-%{_libdir}/gstreamer-1.0/libgstamrwbdec.so
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
 
 %changelog
+* Fri Mar 17 2023 Leigh Scott <leigh123linux@gmail.com> - 1:1.22.0-2
+- Fix rfbz#6605
+
 * Sun Feb 19 2023 Leigh Scott <leigh123linux@gmail.com> - 1:1.22.0-1
 - Update gstreamer1-plugins-ugly to 1.22.0
 
