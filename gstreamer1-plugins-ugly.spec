@@ -46,6 +46,8 @@ gstreamer-plugins-good because:
 %meson \
     -D package-name='gst-plugins-ugly 1.0 rpmfusion rpm' \
     -D package-origin='http://rpmfusion.org/' \
+    -D amrnb=disabled \
+    -D amrwbdec=disabled \
     -D doc=disabled \
     -D cdio=disabled \
     -D dvdread=disabled \
