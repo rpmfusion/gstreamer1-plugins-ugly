@@ -1,7 +1,3 @@
-# gstreamer1.prov is broken and hangs, workarround it
-#global __gstreamer1_provides %{nil}
-
-
 %global src_name gst-plugins-ugly
 
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
