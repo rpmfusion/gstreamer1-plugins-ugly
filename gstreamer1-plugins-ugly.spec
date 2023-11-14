@@ -50,6 +50,7 @@ gstreamer-plugins-good because:
     -D a52dec=disabled \
     -D sidplay=disabled \
     -D mpeg2dec=disabled \
+    -D gpl=enabled \
     -D nls=disabled
 
 %meson_build
