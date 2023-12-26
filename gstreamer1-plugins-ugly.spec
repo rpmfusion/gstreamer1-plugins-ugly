@@ -3,7 +3,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Epoch:          1
-Version:        1.22.7
+Version:        1.22.8
 Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
@@ -12,7 +12,6 @@ Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
 BuildRequires:  gcc
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
-BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  meson
 BuildRequires:  orc-devel >= 0.4.5
 BuildRequires:  x264-devel >= 0.0.0-0.28
@@ -42,6 +41,10 @@ gstreamer-plugins-good because:
 %meson \
     -D package-name='gst-plugins-ugly 1.0 rpmfusion rpm' \
     -D package-origin='http://rpmfusion.org/' \
+    -D asfdemux=disabled \
+    -D dvdlpcmdec=disabled \
+    -D dvdsub=disabled \
+    -D realmedia=disabled \
     -D amrnb=disabled \
     -D amrwbdec=disabled \
     -D doc=disabled \
@@ -63,15 +66,16 @@ gstreamer-plugins-good because:
 %license COPYING
 %{_datadir}/gstreamer-1.0
 # Plugins without external dependencies
-%{_libdir}/gstreamer-1.0/libgstasf.so
-%{_libdir}/gstreamer-1.0/libgstdvdlpcmdec.so
-%{_libdir}/gstreamer-1.0/libgstdvdsub.so
-%{_libdir}/gstreamer-1.0/libgstrealmedia.so
+
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
 
 %changelog
+* Wed Dec 20 2023 Dominik Mierzejewski <dominik@greysector.net> - 1:1.22.8-1
+- Update to 1.22.8
+- Drop plugins moved to Fedora
+
 * Wed Nov 15 2023 Nicolas Chauvet <kwizart@gmail.com> - 1:1.22.7-1
 - Update to 1.22.7
 
