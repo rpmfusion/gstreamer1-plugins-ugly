@@ -3,8 +3,8 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Epoch:          1
-Version:        1.22.9
-Release:        2%{?dist}
+Version:        1.24.0
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
@@ -45,8 +45,6 @@ gstreamer-plugins-good because:
     -D dvdlpcmdec=disabled \
     -D dvdsub=disabled \
     -D realmedia=disabled \
-    -D amrnb=disabled \
-    -D amrwbdec=disabled \
     -D doc=disabled \
     -D cdio=disabled \
     -D dvdread=disabled \
@@ -72,6 +70,9 @@ gstreamer-plugins-good because:
 
 
 %changelog
+* Tue Apr 09 2024 Dominik Mierzejewski <dominik@greysector.net> - 1:1.24.0-1
+- Update to 1.24.0
+
 * Sat Feb 03 2024 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1:1.22.9-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 
