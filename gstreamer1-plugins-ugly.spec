@@ -3,7 +3,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Epoch:          1
-Version:        1.22.1
+Version:        1.22.12
 Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
@@ -12,7 +12,6 @@ Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
 BuildRequires:  gcc
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
-BuildRequires:  libid3tag-devel >= 0.15.0
 BuildRequires:  meson
 BuildRequires:  orc-devel >= 0.4.5
 BuildRequires:  x264-devel >= 0.0.0-0.28
@@ -42,6 +41,10 @@ gstreamer-plugins-good because:
 %meson \
     -D package-name='gst-plugins-ugly 1.0 rpmfusion rpm' \
     -D package-origin='http://rpmfusion.org/' \
+    -D asfdemux=disabled \
+    -D dvdlpcmdec=disabled \
+    -D dvdsub=disabled \
+    -D realmedia=disabled \
     -D amrnb=disabled \
     -D amrwbdec=disabled \
     -D doc=disabled \
@@ -63,15 +66,46 @@ gstreamer-plugins-good because:
 %license COPYING
 %{_datadir}/gstreamer-1.0
 # Plugins without external dependencies
-%{_libdir}/gstreamer-1.0/libgstasf.so
-%{_libdir}/gstreamer-1.0/libgstdvdlpcmdec.so
-%{_libdir}/gstreamer-1.0/libgstdvdsub.so
-%{_libdir}/gstreamer-1.0/libgstrealmedia.so
+
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
 
 %changelog
+* Sat May 04 2024 Dominik Mierzejewski <dominik@greysector.net> - 1:1.22.12-1
+- Update to 1.22.12
+
+* Fri Apr 26 2024 Dominik Mierzejewski <dominik@greysector.net> - 1:1.22.11-1
+- Update to 1.22.11
+
+* Sat Feb 03 2024 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1:1.22.9-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Jan 31 2024 Dominik Mierzejewski <dominik@greysector.net> - 1:1.22.9-1
+- Update to 1.22.9
+
+* Wed Dec 20 2023 Dominik Mierzejewski <dominik@greysector.net> - 1:1.22.8-1
+- Update to 1.22.8
+- Drop plugins moved to Fedora
+
+* Wed Nov 15 2023 Nicolas Chauvet <kwizart@gmail.com> - 1:1.22.7-1
+- Update to 1.22.7
+
+* Thu Nov 02 2023 Leigh Scott <leigh123linux@gmail.com> - 1:1.22.6-1
+- Update gstreamer1-plugins-ugly to 1.22.6
+
+* Sat Aug 12 2023 Leigh Scott <leigh123linux@gmail.com> - 1:1.22.5-1
+- Update gstreamer1-plugins-ugly to 1.22.5
+
+* Wed Aug 02 2023 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1:1.22.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Thu May 25 2023 Sérgio Basto <sergio@serjux.com> - 1:1.22.3-1
+- Update gstreamer1-plugins-ugly to 1.22.3
+
+* Sun Apr 23 2023 Leigh Scott <leigh123linux@gmail.com> - 1:1.22.2-1
+- Updated to version 1.22.2
+
 * Wed Mar 29 2023 Vitaly Zaitsev <vitaly@easycoding.org> - 1:1.22.1-1
 - Updated to version 1.22.1.
 
