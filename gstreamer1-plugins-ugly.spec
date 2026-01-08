@@ -3,7 +3,7 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Epoch:          1
-Version:        1.26.9
+Version:        1.26.10
 Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
@@ -70,6 +70,9 @@ gstreamer-plugins-good because:
 
 
 %changelog
+* Thu Jan 08 2026 Dominik Mierzejewski <dominik@greysector.net> - 1:1.26.10-1
+- Update to 1.26.10
+
 * Thu Dec 04 2025 Dominik Mierzejewski <dominik@greysector.net> - 1:1.26.9-1
 - Update to 1.26.9
 
