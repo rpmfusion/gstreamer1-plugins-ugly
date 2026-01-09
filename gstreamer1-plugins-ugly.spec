@@ -63,9 +63,6 @@ gstreamer-plugins-good because:
 %doc AUTHORS NEWS README.md README.static-linking RELEASE REQUIREMENTS
 %license COPYING
 %{_datadir}/gstreamer-1.0
-# Plugins without external dependencies
-
-# Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
 
