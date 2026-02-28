@@ -3,8 +3,8 @@
 Summary:        GStreamer 1.0 streaming media framework "ugly" plug-ins
 Name:           gstreamer1-plugins-ugly
 Epoch:          1
-Version:        1.26.10
-Release:        2%{?dist}
+Version:        1.28.1
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/%{src_name}/%{src_name}-%{version}.tar.xz
@@ -60,13 +60,16 @@ gstreamer-plugins-good because:
 %meson_install
 
 %files
-%doc AUTHORS NEWS README.md README.static-linking RELEASE REQUIREMENTS
+%doc README.md README.static-linking RELEASE
 %license COPYING
 %{_datadir}/gstreamer-1.0
 %{_libdir}/gstreamer-1.0/libgstx264.so
 
 
 %changelog
+* Sat Feb 28 2026 Dominik Mierzejewski <dominik@greysector.net> - 1:1.28.1-1
+- update to 1.28.1
+
 * Mon Feb 02 2026 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1:1.26.10-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
 
